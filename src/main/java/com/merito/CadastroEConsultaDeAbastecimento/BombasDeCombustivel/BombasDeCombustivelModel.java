@@ -32,9 +32,10 @@ public class BombasDeCombustivelModel {
     @Column (name = "combustivelQueAbastece")
     private String combustivelQueAbastece;
 
-    // Uma bomba pode ter varios tipos de combustiveis
-    @OneToMany(mappedBy = "bombas")
-    private TiposDeCombustivelModel tiposDeCombustivel;
+
+    // Uma bomba pode ter vários tipos de combustíveis
+    @OneToMany(mappedBy = "bomba")
+    private List<TiposDeCombustivelModel> tiposDeCombustivel;
 
 
 }

@@ -21,10 +21,10 @@ public class TiposDeCombustivelModel {
     private String nomeDoCombustivel ;
     private int precoPorLitro;
 
-    // um tipo de combustivel pode ter uma bomba
+    // Um tipo de combustível pode ter uma bomba
     @ManyToOne
-    @JoinColumn(name = "missoes_id") // Foreing key ou chave estrangeira
-    private List<BombasDeCombustivelModel> bomba;
+    @JoinColumn(name = "bomba_id")
+    private BombasDeCombustivelModel bomba;
 
 
 
