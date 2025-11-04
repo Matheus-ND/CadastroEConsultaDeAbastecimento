@@ -22,7 +22,6 @@ public class BombasDeCombustivelModel {
     private TiposDeCombustivelModel tiposDeCombustivel;
 
 
-
     public BombasDeCombustivelModel(String nomeDaBomba, String combustivelQueAbastece) {
         this.nomeDaBomba = nomeDaBomba;
         this.CombustivelQueAbastece = combustivelQueAbastece;
