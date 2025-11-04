@@ -1,7 +1,10 @@
-package com.merito.CadastroEConsultaDeAbastecimento;
+package com.merito.CadastroEConsultaDeAbastecimento.BombasDeCombustivel;
 
 
+import com.merito.CadastroEConsultaDeAbastecimento.TiposDeCombustivel.TiposDeCombustivelModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 // Entity transforma uma classe em uma entidade do BD
 @Entity
@@ -9,10 +12,15 @@ import jakarta.persistence.*;
 public class BombasDeCombustivelModel {
 
     @Id
-            @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String nomeDaBomba;
-    String CombustivelQueAbastece;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nomeDaBomba;
+    private String CombustivelQueAbastece;
+
+    // Uma bomba pode ter varios tipos de combustiveis
+    @OneToMany(mappedBy = "bombas")
+    private TiposDeCombustivelModel tiposDeCombustivel;
+
 
 
     public BombasDeCombustivelModel(String nomeDaBomba, String combustivelQueAbastece) {
