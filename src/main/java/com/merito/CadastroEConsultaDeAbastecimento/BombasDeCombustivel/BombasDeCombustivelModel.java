@@ -20,7 +20,10 @@ public class BombasDeCombustivelModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true) // nao pode ter duas bombas com o mesmo nome
     private String nomeDaBomba;
+
     private String CombustivelQueAbastece;
 
     // Uma bomba pode ter varios tipos de combustiveis
