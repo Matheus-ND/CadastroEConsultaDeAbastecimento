@@ -19,12 +19,18 @@ public class BombasDeCombustivelModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Column (name = "id")
     private Long id;
 
     @Column(unique = true) // nao pode ter duas bombas com o mesmo nome
     private String nomeDaBomba;
 
-    private String CombustivelQueAbastece;
+    @Column (name = "img_Url")
+    private String imgUrl;
+
+    @Column (name = "combustivelQueAbastece")
+    private String combustivelQueAbastece;
 
     // Uma bomba pode ter varios tipos de combustiveis
     @OneToMany(mappedBy = "bombas")
