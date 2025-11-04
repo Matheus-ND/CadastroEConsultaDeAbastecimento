@@ -2,11 +2,17 @@ package com.merito.CadastroEConsultaDeAbastecimento.TiposDeCombustivel;
 
 import com.merito.CadastroEConsultaDeAbastecimento.BombasDeCombustivel.BombasDeCombustivelModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = " tb_tiposdecombustvel")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class TiposDeCombustivelModel {
 
     @Id
