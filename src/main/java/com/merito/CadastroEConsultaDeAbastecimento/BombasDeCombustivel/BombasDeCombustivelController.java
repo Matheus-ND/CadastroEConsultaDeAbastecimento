@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping
 public class BombasDeCombustivelController {
 
-    @GetMapping("/boasvindas")
+    @GetMapping("/bombas")
     public String boasVindas() {
         return " Mensagem ";
     }
@@ -19,13 +19,13 @@ public class BombasDeCombustivelController {
     }
 
     //mostrar todas as bombas (READ)
-    @GetMapping("/todos")
+    @GetMapping("/listar")
     public String mostrarTodasAsBombas(){
         return "Mostrar Bomba";
     }
 
     //mostrar bombas por id (READ)
-    @GetMapping("/todosID")
+    @GetMapping("/listarID")
     public String mostrarTodasAsBombasPorId() {
         return "Mostrar Bomba por id";
     }
