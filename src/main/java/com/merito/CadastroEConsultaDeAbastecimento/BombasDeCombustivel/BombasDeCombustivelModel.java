@@ -1,6 +1,5 @@
 package com.merito.CadastroEConsultaDeAbastecimento.BombasDeCombustivel;
 
-
 import com.merito.CadastroEConsultaDeAbastecimento.TiposDeCombustivel.TiposDeCombustivelModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-// Entity transforma uma classe em uma entidade do BD
 @Entity
 @Table(name = "tb_cadastro_de_bombas_de_combustivel")
 @Data
@@ -19,23 +17,20 @@ public class BombasDeCombustivelModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column (name = "id")
     private Long id;
 
-    @Column(unique = true) // nao pode ter duas bombas com o mesmo nome
+    @Column(unique = true, name = "nomeDaBomba") // não pode ter duas bombas com o mesmo nome
     private String nomeDaBomba;
 
-    @Column (name = "img_Url")
+    @Column(name = "img_Url")
     private String imgUrl;
 
-    @Column (name = "combustivelQueAbastece")
-    private String combustivelQueAbastece;
-
-
     // Uma bomba pode ter vários tipos de combustíveis
-    @OneToMany(mappedBy = "bomba")
+    @ManyToMany
+    @JoinTable(
+            name = "bomba_combustivel", // Tabela de junção
+            joinColumns = @JoinColumn(name = "bomba_id"), // Chave da bomba
+            inverseJoinColumns = @JoinColumn(name = "tipo_combustivel_id") // Chave do tipo de combustível
+    )
     private List<TiposDeCombustivelModel> tiposDeCombustivel;
-
-
 }

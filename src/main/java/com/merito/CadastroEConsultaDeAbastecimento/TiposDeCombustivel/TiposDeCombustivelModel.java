@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = " tb_tiposdecombustivel")
+@Table(name ="tb_tiposdecombustivel")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,16 +17,13 @@ public class TiposDeCombustivelModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id ;
-    private String nomeDoCombustivel ;
-    private int precoPorLitro;
+    private Long id;
 
-    // Um tipo de combustível pode ter uma bomba
-    @ManyToOne
-    @JoinColumn(name = "bomba_id")
-    private BombasDeCombustivelModel bomba;
+    private String nomeDoCombustivel;
 
+    private Double precoPorLitro;
 
-
-
+    // Um tipo de combustível pode ter várias bombas
+    @ManyToMany(mappedBy = "tiposDeCombustivel")
+    private List<BombasDeCombustivelModel> bombas;
 }
