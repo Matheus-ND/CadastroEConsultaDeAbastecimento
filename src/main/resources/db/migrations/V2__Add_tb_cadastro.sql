@@ -1,0 +1,1 @@
+-- Migrations para adicionar coluna de cadastro na tabela de cadastro
