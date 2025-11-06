@@ -35,6 +35,13 @@ public class BombasDeCombustivelService {
         bombasDeCombustivelRepository.deleteById(id);
     }
 
-
+    //Atualizar bomba
+    public BombasDeCombustivelModel atualizarBomba(Long id, BombasDeCombustivelModel bombaAtualizada) {
+        if (bombasDeCombustivelRepository.existsById(id)){
+            bombaAtualizada.setId(id);
+            return bombasDeCombustivelRepository.save(bombaAtualizada);
+        }
+return null;
+    }
 
 }

@@ -39,9 +39,9 @@ public class BombasDeCombustivelController {
     }
 
     //alterar dados das bombas (UPDATE)
-        @PutMapping("/alterarID")
-        public String alterarBombaPorId() {
-            return "Alterar Bomba por id";
+        @PutMapping("/alterar/{id}")
+        public BombasDeCombustivelModel alterarBombaPorId(@PathVariable Long id, @RequestBody BombasDeCombustivelModel bombaAtualizada) {
+            return bombasDeCombustivelService.atualizarBomba(id, bombaAtualizada);
         }
 
 
