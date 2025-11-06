@@ -1,7 +1,6 @@
 package com.merito.CadastroEConsultaDeAbastecimento.BombasDeCombustivel;
 
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +8,7 @@ import java.util.Optional;
 public class BombasDeCombustivelService {
 
     private BombasDeCombustivelRepository bombasDeCombustivelRepository;
+    private BombasDeCombustivelMapper bombasDeCombustivelMapper;
 
     public BombasDeCombustivelService(BombasDeCombustivelRepository bombasDeCombustivelRepository) {
         this.bombasDeCombustivelRepository = bombasDeCombustivelRepository;
@@ -26,8 +26,10 @@ public class BombasDeCombustivelService {
     }
 
     //Criar uma nova bomba
-    public BombasDeCombustivelModel criarBomba(BombasDeCombustivelModel bomba){
-        return bombasDeCombustivelRepository.save(bomba);
+    public BombasDeCombustivelDTO criarBomba(BombasDeCombustivelDTO bombaDTO) {
+        BombasDeCombustivelModel bomba = bombasDeCombustivelMapper.map(bombaDTO);
+        bomba = bombasDeCombustivelRepository.save(bomba);
+        return bombasDeCombustivelMapper.map(bomba);
     }
 
     //Deletar a bomba - Tem que ser VOID
