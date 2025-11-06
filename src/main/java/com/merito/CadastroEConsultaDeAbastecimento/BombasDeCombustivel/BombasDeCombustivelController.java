@@ -2,9 +2,17 @@ package com.merito.CadastroEConsultaDeAbastecimento.BombasDeCombustivel;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping
 public class BombasDeCombustivelController {
+
+    private BombasDeCombustivelService bombasDeCombustivelService;
+
+    public BombasDeCombustivelController(BombasDeCombustivelService bombasDeCombustivelService) {
+        this.bombasDeCombustivelService = bombasDeCombustivelService;
+    }
 
     @GetMapping("/bombas")
     public String boasVindas() {
@@ -20,8 +28,8 @@ public class BombasDeCombustivelController {
 
     //mostrar todas as bombas (READ)
     @GetMapping("/listar")
-    public String mostrarTodasAsBombas(){
-        return "Mostrar Bomba";
+    public List<BombasDeCombustivelModel> listarBombas(){
+        return bombasDeCombustivelService.listarBombas();
     }
 
     //mostrar bombas por id (READ)
