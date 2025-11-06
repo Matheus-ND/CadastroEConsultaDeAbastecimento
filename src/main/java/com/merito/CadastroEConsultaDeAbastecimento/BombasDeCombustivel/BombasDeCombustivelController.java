@@ -46,9 +46,9 @@ public class BombasDeCombustivelController {
 
 
     //deletar bomba (DELETE)
-    @DeleteMapping("/deletarID")
-    public String deletarBombaPorId() {
-        return "Bomba deletada por id";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarBombaPorId(@PathVariable Long id) {
+        bombasDeCombustivelService.deletarBombaPorId(id);
     }
 
 

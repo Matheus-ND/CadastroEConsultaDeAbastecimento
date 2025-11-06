@@ -30,4 +30,11 @@ public class BombasDeCombustivelService {
         return bombasDeCombustivelRepository.save(bomba);
     }
 
+    //Deletar a bomba - Tem que ser VOID
+    public void deletarBombaPorId(Long id) {
+        bombasDeCombustivelRepository.deleteById(id);
+    }
+
+
+
 }
