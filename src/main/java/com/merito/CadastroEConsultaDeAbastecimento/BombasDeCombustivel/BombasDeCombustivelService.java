@@ -25,6 +25,9 @@ public class BombasDeCombustivelService {
         return bombasPorId.orElse(null);
     }
 
-
+    //Criar uma nova bomba
+    public BombasDeCombustivelModel criarBomba(BombasDeCombustivelModel bomba){
+        return bombasDeCombustivelRepository.save(bomba);
+    }
 
 }

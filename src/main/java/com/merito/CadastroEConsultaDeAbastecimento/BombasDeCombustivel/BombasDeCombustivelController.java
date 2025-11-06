@@ -22,8 +22,8 @@ public class BombasDeCombustivelController {
     //CRRUD
     //adicionar bomba (CREATE)
     @PostMapping("/criar")
-    public String criarBomba(){
-        return "Bomba criada";
+    public BombasDeCombustivelModel criarBomba(@RequestBody BombasDeCombustivelModel bomba){
+        return bombasDeCombustivelService.criarBomba(bomba);
     }
 
     //mostrar todas as bombas (READ)
