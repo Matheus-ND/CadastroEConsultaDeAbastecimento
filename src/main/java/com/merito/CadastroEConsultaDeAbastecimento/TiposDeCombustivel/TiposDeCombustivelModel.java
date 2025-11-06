@@ -1,5 +1,6 @@
 package com.merito.CadastroEConsultaDeAbastecimento.TiposDeCombustivel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.merito.CadastroEConsultaDeAbastecimento.BombasDeCombustivel.BombasDeCombustivelModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,5 +26,6 @@ public class TiposDeCombustivelModel {
 
     // Um tipo de combustível pode ter várias bombas
     @ManyToMany(mappedBy = "tiposDeCombustivel")
+    @JsonIgnore
     private List<BombasDeCombustivelModel> bombas;
 }
