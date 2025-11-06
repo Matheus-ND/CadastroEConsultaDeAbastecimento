@@ -3,6 +3,7 @@ package com.merito.CadastroEConsultaDeAbastecimento.BombasDeCombustivel;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BombasDeCombustivelService {
@@ -14,18 +15,18 @@ public class BombasDeCombustivelService {
         this.bombasDeCombustivelRepository = bombasDeCombustivelRepository;
     }
 
-    //Listar todas as minhas Bombas
-    public List<BombasDeCombustivelModel> listarBombas() {
-        return bombasDeCombustivelRepository.findAll();
+    public List<BombasDeCombustivelDTO> listarBombas() {
+        List<BombasDeCombustivelModel> bombas = bombasDeCombustivelRepository.findAll();
+        return bombas.stream()
+                .map(bombasDeCombustivelMapper::map)
+                 .collect(Collectors.toList());
     }
 
-    //Listar todos as minhas bombas por ID
-    public BombasDeCombustivelModel listarBombasPorId(Long id) {
+    public BombasDeCombustivelDTO listarBombasPorId(Long id) {
         Optional<BombasDeCombustivelModel> bombasPorId = bombasDeCombustivelRepository.findById(id);
-        return bombasPorId.orElse(null);
+        return bombasPorId.map(bombasDeCombustivelMapper::map).orElse(null);
     }
 
-    //Criar uma nova bomba
     public BombasDeCombustivelDTO criarBomba(BombasDeCombustivelDTO bombaDTO) {
         BombasDeCombustivelModel bomba = bombasDeCombustivelMapper.map(bombaDTO);
         bomba = bombasDeCombustivelRepository.save(bomba);
@@ -38,12 +39,16 @@ public class BombasDeCombustivelService {
     }
 
     //Atualizar bomba
-    public BombasDeCombustivelModel atualizarBomba(Long id, BombasDeCombustivelModel bombaAtualizada) {
-        if (bombasDeCombustivelRepository.existsById(id)){
-            bombaAtualizada.setId(id);
-            return bombasDeCombustivelRepository.save(bombaAtualizada);
-        }
-return null;
+    public BombasDeCombustivelDTO atualizarBomba(Long id, BombasDeCombustivelDTO bombasDeCombustivelDTO) {
+      Optional<BombasDeCombustivelModel> bombaExistente = bombasDeCombustivelRepository.findById(id);
+      if (bombaExistente.isPresent()) {
+          BombasDeCombustivelModel bombaAtualizada = bombasDeCombustivelMapper.map(bombasDeCombustivelDTO);
+          bombaAtualizada.setId(id);
+          BombasDeCombustivelModel bombaSalva = bombasDeCombustivelRepository.save(bombaAtualizada);
+            return bombasDeCombustivelMapper.map(bombaSalva);
+
+      }
+      return null;
     }
 
 }
