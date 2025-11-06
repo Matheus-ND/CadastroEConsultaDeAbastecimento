@@ -33,9 +33,9 @@ public class BombasDeCombustivelController {
     }
 
     //mostrar bombas por id (READ)
-    @GetMapping("/listarID")
-    public String mostrarTodasAsBombasPorId() {
-        return "Mostrar Bomba por id";
+    @GetMapping("/listar/{id}")
+    public BombasDeCombustivelModel listarBombasPorId(@PathVariable Long id) {
+        return bombasDeCombustivelService.listarBombasPorId(id);
     }
 
     //alterar dados das bombas (UPDATE)
