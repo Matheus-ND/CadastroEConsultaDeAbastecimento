@@ -1,7 +1,5 @@
 package com.merito.CadastroEConsultaDeAbastecimento.BombasDeCombustivel;
-
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -22,25 +20,25 @@ public class BombasDeCombustivelController {
     //CRRUD
     //adicionar bomba (CREATE)
     @PostMapping("/criar")
-    public BombasDeCombustivelModel criarBomba(@RequestBody BombasDeCombustivelModel bomba){
+    public BombasDeCombustivelDTO criarBomba(@RequestBody BombasDeCombustivelDTO bomba){
         return bombasDeCombustivelService.criarBomba(bomba);
     }
 
     //mostrar todas as bombas (READ)
     @GetMapping("/listar")
-    public List<BombasDeCombustivelModel> listarBombas(){
+    public List<BombasDeCombustivelDTO> listarBombas() {
         return bombasDeCombustivelService.listarBombas();
     }
 
     //mostrar bombas por id (READ)
     @GetMapping("/listar/{id}")
-    public BombasDeCombustivelModel listarBombasPorId(@PathVariable Long id) {
+    public BombasDeCombustivelDTO listarBombasPorId(@PathVariable Long id) {
         return bombasDeCombustivelService.listarBombasPorId(id);
     }
 
     //alterar dados das bombas (UPDATE)
         @PutMapping("/alterar/{id}")
-        public BombasDeCombustivelModel alterarBombaPorId(@PathVariable Long id, @RequestBody BombasDeCombustivelModel bombaAtualizada) {
+        public BombasDeCombustivelDTO alterarBombaPorId(@PathVariable Long id, @RequestBody BombasDeCombustivelDTO bombaAtualizada) {
             return bombasDeCombustivelService.atualizarBomba(id, bombaAtualizada);
         }
 
