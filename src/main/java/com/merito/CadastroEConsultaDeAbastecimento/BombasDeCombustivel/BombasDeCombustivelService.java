@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 @Service
 public class BombasDeCombustivelService {
 
-    private BombasDeCombustivelRepository bombasDeCombustivelRepository;
+    private final BombasDeCombustivelRepository bombasDeCombustivelRepository;
     private BombasDeCombustivelMapper bombasDeCombustivelMapper;
 
     public BombasDeCombustivelService(BombasDeCombustivelRepository bombasDeCombustivelRepository) {

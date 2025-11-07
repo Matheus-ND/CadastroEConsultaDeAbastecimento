@@ -9,7 +9,7 @@ import java.util.List;
 @RequestMapping
 public class BombasDeCombustivelController {
 
-    private BombasDeCombustivelService bombasDeCombustivelService;
+    private final BombasDeCombustivelService bombasDeCombustivelService;
 
     public BombasDeCombustivelController(BombasDeCombustivelService bombasDeCombustivelService) {
         this.bombasDeCombustivelService = bombasDeCombustivelService;
