@@ -1,5 +1,4 @@
 package com.merito.CadastroEConsultaDeAbastecimento.BombasDeCombustivel;
-
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -9,10 +8,11 @@ import java.util.stream.Collectors;
 public class BombasDeCombustivelService {
 
     private final BombasDeCombustivelRepository bombasDeCombustivelRepository;
-    private BombasDeCombustivelMapper bombasDeCombustivelMapper;
+    private final BombasDeCombustivelMapper bombasDeCombustivelMapper;
 
-    public BombasDeCombustivelService(BombasDeCombustivelRepository bombasDeCombustivelRepository) {
+    public BombasDeCombustivelService(BombasDeCombustivelRepository bombasDeCombustivelRepository, BombasDeCombustivelMapper bombasDeCombustivelMapper) {
         this.bombasDeCombustivelRepository = bombasDeCombustivelRepository;
+        this.bombasDeCombustivelMapper = bombasDeCombustivelMapper;
     }
 
     public List<BombasDeCombustivelDTO> listarBombas() {
@@ -21,6 +21,7 @@ public class BombasDeCombustivelService {
                 .map(bombasDeCombustivelMapper::map)
                  .collect(Collectors.toList());
     }
+
 
     public BombasDeCombustivelDTO listarBombasPorId(Long id) {
         Optional<BombasDeCombustivelModel> bombasPorId = bombasDeCombustivelRepository.findById(id);

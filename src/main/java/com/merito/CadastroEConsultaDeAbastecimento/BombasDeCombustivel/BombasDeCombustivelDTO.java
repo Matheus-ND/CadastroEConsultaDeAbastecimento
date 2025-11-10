@@ -14,6 +14,7 @@ public class BombasDeCombustivelDTO {
     private Long id;
     private String nomeDaBomba;
     private String imgUrl;
+    private Double precoPorLitro;
     private List<TiposDeCombustivelModel> tiposDeCombustivel;
 
 }

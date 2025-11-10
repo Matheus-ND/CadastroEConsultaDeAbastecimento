@@ -1,12 +1,11 @@
 package com.merito.CadastroEConsultaDeAbastecimento.BombasDeCombustivel;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/bombas")
 public class BombasDeCombustivelController {
 
     private final BombasDeCombustivelService bombasDeCombustivelService;
@@ -26,7 +25,7 @@ public class BombasDeCombustivelController {
     public ResponseEntity <String> criarBomba(@RequestBody BombasDeCombustivelDTO bomba) {
         BombasDeCombustivelDTO novaBomba = bombasDeCombustivelService.criarBomba(bomba);
        return ResponseEntity.status(HttpStatus.CREATED)
-                .body("Boomba criada com sucesso: " + novaBomba.getNomeDaBomba() + " (ID): " + novaBomba.getId());
+                .body("Bomba criada com sucesso: " + novaBomba.getNomeDaBomba() + " (ID): " + novaBomba.getId());
 
     }
 
